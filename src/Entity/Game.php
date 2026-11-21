@@ -6,20 +6,18 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\GameRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: GameRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['game:read']],
+    denormalizationContext: ['groups' => ['game:write']],
+)]
 class Game
 {
-    #[ApiResource(
-        normalizationContext: ['groups' => ['game:read']],
-        denormalizationContext: ['groups' => ['game:write']],
-    )]
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -41,11 +39,11 @@ class Game
     #[Assert\Length(max: 400)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 10)]
+    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     #[Groups(['game:read', 'game:write'])]
     #[Assert\NotBlank]
-    #[Assert\Length(exactly: 10)]
-    private ?string $releaseDate = null;
+    #[Assert\Type(\DateTimeInterface::class)]
+    private ?\DateTimeImmutable $releaseDate = null;
 
     /**
      * @var Collection<int, Platform>
@@ -80,6 +78,19 @@ class Game
         return $this->id;
     }
 
+    public function getRawgId(): ?string
+    {
+        return $this->rawgId;
+    }
+
+    public function setRawgId(?string $rawgId): static
+    {
+        $this->rawgId = $rawgId;
+
+        return $this;
+    }
+
+
     public function getName(): ?string
     {
         return $this->name;
@@ -104,12 +115,12 @@ class Game
         return $this;
     }
 
-    public function getReleaseDate(): ?string
+    public function getReleaseDate(): ?\DateTimeImmutable
     {
         return $this->releaseDate;
     }
 
-    public function setReleaseDate(string $releaseDate): static
+    public function setReleaseDate(\DateTimeImmutable $releaseDate): static
     {
         $this->releaseDate = $releaseDate;
 

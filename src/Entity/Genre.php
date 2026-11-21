@@ -35,7 +35,6 @@ class Genre
      * @var Collection<int, Game>
      */
     #[ORM\ManyToMany(targetEntity: Game::class, mappedBy: 'genre')]
-    #[Groups(['genre:read'])]
     private Collection $games;
 
     public function __construct()

@@ -35,7 +35,6 @@ class Platform
      * @var Collection<int, Game>
      */
     #[ORM\ManyToMany(targetEntity: Game::class, mappedBy: 'platform')]
-    #[Groups(['platform:read'])]
     private Collection $games;
 
     public function __construct()

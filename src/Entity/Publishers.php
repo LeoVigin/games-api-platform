@@ -36,7 +36,6 @@ class Publishers
      * @var Collection<int, Game>
      */
     #[ORM\OneToMany(targetEntity: Game::class, mappedBy: 'publishers')]
-    #[Groups(['publishers:read'])]
     private Collection $games;
 
     public function __construct()
