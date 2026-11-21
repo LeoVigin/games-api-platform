@@ -172,8 +172,10 @@ class ImportGamesCommand extends Command
             $publishers = $detail['publishers'] ?? [];
             if (!empty($publishers) && !empty($publishers[0]['name'])) {
                 $publisherName = $this->truncate(trim((string) $publishers[0]['name']), 255);
-                $game->setPublishers($this->findOrCreatePublisher($publisherName));
+            } else {
+                $publisherName = 'Inconnu';
             }
+            $game->setPublishers($this->findOrCreatePublisher($publisherName));
 
             // ═══════════════════════════════════════
             // T4 - NORMALISER : 4 premiers genres, en minuscules
