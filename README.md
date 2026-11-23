@@ -4,7 +4,7 @@ This application is a listing of video games built using the RAWG API that users
 ## Table of Contents
 
 - [Installation & Start](#installation--start)
-- [Diagrams](#handmade-diagram-and-updated-mermaid)
+- [Diagrams](#diagrams)
 - [Sources](#sources)
 - [Import Commands](#import-commands)
 - [Table Mapping](#table-mapping)
@@ -45,9 +45,11 @@ php bin/console doctrine:migrations:migrate
 ```
 symfony serve -d
 ```
-
-## Handmade Diagram and updated Mermaid
+## Diagrams
+### Initial Handmade Sketch
 <img src="imgs/diagram.webp" alt="Handmade diagram" width="400"></img>
+
+### Updated Mermaid ER Diagram
 ```mermaid
 erDiagram
     GAME {
