@@ -96,7 +96,7 @@ erDiagram
 
 ## Sources
 
-- The project details are in this [workbook](https://devincimy.sharepoint.com/personal/gabriel_lefebvre_fristot_edu_devinci_fr/Documents/mapping-architecture-donnees.xlsx?d=w189c88ab53184f17a1ef24a9b8965f7f&csf=1&web=1&e=U791iS)
+- The project details are in this [workbook](https://devinci-my.sharepoint.com/personal/gabriel_lefebvre_fristot_edu_devinci_fr/Documents/mapping-architecture-donnees.xlsx?d=w189c88ab53184f17a1ef24a9b8965f7f&csf=1&web=1&e=8JtBYd)
 - The Rawg API doc [here](https://rawg.io/apidocs)
 
 
